@@ -1,0 +1,31 @@
+#include <unistd.h>
+void ft_putstr(char *str)
+{
+    while (*str)
+        write (1, str++, 1);
+}
+// $>./wdmatch "faya" "fgvvfdxcacpolhyghbreda" | cat -e
+//faya$
+int main(int ac, char **av)
+{
+    char *tmp;
+
+    tmp = av[1];
+    if (ac == 3)
+    {
+       while (*tmp && *av[2]) 
+       {
+            while (*tmp && *av[2] && (*tmp == *av[2]))
+            {
+                tmp++;
+                av[2]++;
+            }
+             av[2]++;
+       }
+      if (!(*tmp))
+      ft_putstr(av[1]);
+    }
+   
+    write(1, "\n", 1);
+    return (0);
+}
